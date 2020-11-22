@@ -3,15 +3,15 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2020-11-22T21:54:35Z"
+  creationTimestamp: "2020-11-22T22:16:23Z"
   generation: 1
   labels:
     app: group8-app
   name: group8-app
   namespace: default
-  resourceVersion: "34137"
+  resourceVersion: "1495"
   selfLink: /apis/apps/v1/namespaces/default/deployments/group8-app
-  uid: 1b7272d1-dfd9-4665-bdb9-8c32efb8850e
+  uid: 83a362cd-c9f2-4fa2-8128-d374b1d45ab3
 spec:
   progressDeadlineSeconds: 600
   replicas: 3
@@ -31,7 +31,7 @@ spec:
         app: group8-app
     spec:
       containers:
-      - image: gcr.io/cloud-com-294113/github.com/mahmad-lu/cloud_group_8@sha256:75b95de23e3bc5ee837b94fe4e5a0df8fbeb11cdc500d7ba38349f8993f0dbaa
+      - image: gcr.io/cloud-com-294113/github.com/mahmad-lu/cloud_group_8@sha256:864e74ff8da513d70c08a751ab29bb971686a44fc7ba176f9cc41b69b820b45c
         imagePullPolicy: IfNotPresent
         name: cloud-group-8-sha256-1
         resources: {}
@@ -45,15 +45,15 @@ spec:
 status:
   availableReplicas: 3
   conditions:
-  - lastTransitionTime: "2020-11-22T21:54:55Z"
-    lastUpdateTime: "2020-11-22T21:54:55Z"
+  - lastTransitionTime: "2020-11-22T22:17:12Z"
+    lastUpdateTime: "2020-11-22T22:17:12Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2020-11-22T21:54:35Z"
-    lastUpdateTime: "2020-11-22T21:54:55Z"
-    message: ReplicaSet "group8-app-6cb8dc9fcb" has successfully progressed.
+  - lastTransitionTime: "2020-11-22T22:16:23Z"
+    lastUpdateTime: "2020-11-22T22:17:12Z"
+    message: ReplicaSet "group8-app-b74cdffcc" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
