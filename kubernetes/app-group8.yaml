@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2020-11-22T18:09:24Z"
+  generation: 1
+  labels:
+    app: app-group8
+  name: app-group8
+  namespace: namespace-group8
+  resourceVersion: "999"
+  selfLink: /apis/apps/v1/namespaces/namespace-group8/deployments/app-group8
+  uid: 3be8bbd8-f8ef-4b50-827e-12ca170d1d1f
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: app-group8
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-group8
+    spec:
+      containers:
+      - image: gcr.io/cloud-com-294113/cloud-g8@sha256:c7a12ad240ff3e87ec1f568dda4b0bedba794d0bb56d287093a76f8c8ff1a1ef
+        imagePullPolicy: IfNotPresent
+        name: cloud-g8-sha256-1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2020-11-22T18:10:15Z"
+    lastUpdateTime: "2020-11-22T18:10:15Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-11-22T18:09:24Z"
+    lastUpdateTime: "2020-11-22T18:10:15Z"
+    message: ReplicaSet "app-group8-58d5b7bb67" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
