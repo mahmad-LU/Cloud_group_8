@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2020-11-22T22:16:23Z"
-  generation: 1
+  creationTimestamp: "2020-11-22T22:36:06Z"
+  generation: 19
   labels:
-    app: group8-app
-  name: group8-app
+    app: g8-app
+  name: g8-app
   namespace: default
-  resourceVersion: "1495"
-  selfLink: /apis/apps/v1/namespaces/default/deployments/group8-app
-  uid: 83a362cd-c9f2-4fa2-8128-d374b1d45ab3
+  resourceVersion: "3731"
+  selfLink: /apis/apps/v1/namespaces/default/deployments/g8-app
+  uid: e544e421-1034-4ebb-8c79-1e2c0c1a44fa
 spec:
   progressDeadlineSeconds: 600
-  replicas: 3
+  replicas: 4
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: group8-app
+      app: g8-app
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -28,10 +28,10 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: group8-app
+        app: g8-app
     spec:
       containers:
-      - image: gcr.io/cloud-com-294113/github.com/mahmad-lu/cloud_group_8@sha256:864e74ff8da513d70c08a751ab29bb971686a44fc7ba176f9cc41b69b820b45c
+      - image: gcr.io/cloud-com-294113/github.com/mahmad-lu/cloud_group_8@sha256:5ffd21933230c4eb90517bb0f50a830581e1f910b23f4a8a19abbc4fcb5d5012
         imagePullPolicy: IfNotPresent
         name: cloud-group-8-sha256-1
         resources: {}
@@ -43,21 +43,21 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
 status:
-  availableReplicas: 3
+  availableReplicas: 4
   conditions:
-  - lastTransitionTime: "2020-11-22T22:17:12Z"
-    lastUpdateTime: "2020-11-22T22:17:12Z"
+  - lastTransitionTime: "2020-11-22T22:36:06Z"
+    lastUpdateTime: "2020-11-22T22:36:53Z"
+    message: ReplicaSet "g8-app-5df6bfc95c" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2020-11-22T22:45:06Z"
+    lastUpdateTime: "2020-11-22T22:45:06Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2020-11-22T22:16:23Z"
-    lastUpdateTime: "2020-11-22T22:17:12Z"
-    message: ReplicaSet "group8-app-b74cdffcc" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  observedGeneration: 1
-  readyReplicas: 3
-  replicas: 3
-  updatedReplicas: 3
+  observedGeneration: 19
+  readyReplicas: 4
+  replicas: 4
+  updatedReplicas: 4
