@@ -16,32 +16,32 @@ import sys
 import shlex
 import activity_clf
 
-argparser = argparse.ArgumentParser(sys.argv[0])
+# argparser = argparse.ArgumentParser(sys.argv[0])
 
-argparser.add_argument('--train_file', help='Trained file', default="../data/smsspamcollection/train.csv", type=str)
+# argparser.add_argument('--train_file', help='Trained file', default="../data/smsspamcollection/train.csv", type=str)
 
-argparser.add_argument('--dev_file', help='Developed file', default="../data/smsspamcollection/dev.csv", type=str)
+# argparser.add_argument('--dev_file', help='Developed file', default="../data/smsspamcollection/dev.csv", type=str)
 
-argparser.add_argument('--test_file', help='Tested file', default="../data/smsspamcollection/dev.csv", type=str)
+# argparser.add_argument('--test_file', help='Tested file', default="../data/smsspamcollection/dev.csv", type=str)
 
-argparser.add_argument("--tfidf", action='store_true', default=False, help="tfidf flag")
+# argparser.add_argument("--tfidf", action='store_true', default=False, help="tfidf flag")
 
-argparser.add_argument("--use_hash", action='store_true', default=False, help="hashing flag")
+# argparser.add_argument("--use_hash", action='store_true', default=False, help="hashing flag")
 
-argparser.add_argument("--scaler", action='store_true', default=False, help="scale flag")
+# argparser.add_argument("--scaler", action='store_true', default=False, help="scale flag")
 
-argparser.add_argument('--ml_cls', help='Machine learning classifier', default="MLP", type=str)
-                                                                # kNN LR DT SVM MLP AB GB RF NB
-                                                                #DT P(1); SVM dontwork;
-argparser.add_argument('--model_dir', help='Model dir', default="../data/smsspamcollection/", type=str)
+# argparser.add_argument('--ml_cls', help='Machine learning classifier', default="MLP", type=str)
+#                                                                 # kNN LR DT SVM MLP AB GB RF NB
+#                                                                 #DT P(1); SVM dontwork;
+# argparser.add_argument('--model_dir', help='Model dir', default="../data/smsspamcollection/", type=str)
 
-args, unknown = argparser.parse_known_args()
+# args, unknown = argparser.parse_known_args()
 
-model_dir, _ = os.path.split(args.model_dir)
+# model_dir, _ = os.path.split(args.model_dir)
 
-if not os.path.exists(args.model_dir):
-    os.mkdir(args.model_dir)
-args.model_name = os.path.join(args.model_dir, args.ml_cls + ".pickle")
+# if not os.path.exists(args.model_dir):
+#     os.mkdir(args.model_dir)
+# args.model_name = os.path.join(args.model_dir, args.ml_cls + ".pickle")
 
 # define the app
 DebuggingOn = bool(os.getenv('DEBUG', False))  # Whether the Flask app is run in debugging mode, or not.
@@ -57,7 +57,7 @@ CORS(app)  # needed for cross-domain requests, allow everything by default
 #                          stderr=subprocess.PIPE,
 #                          universal_newlines=True)
 
-model_api = load(args.model_name)
+# model_api = load(args.model_name)
 
 
 def sigterm_handler(_signo, _stack_frame):

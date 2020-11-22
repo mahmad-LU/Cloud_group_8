@@ -5,7 +5,7 @@ import argparse
 import numpy as np
 import pandas as pd
 import pickle
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from sklearn import metrics
 from sklearn.metrics import plot_confusion_matrix
 from sklearn.metrics import plot_roc_curve
