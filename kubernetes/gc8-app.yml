@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gp8-app
+  name: gp8-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gp8-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: gp8-app
+    spec:
+      containers:
+        - image: gcr.io/cloud-com-294113/github.com/mahmad-lu/cloud_group_8
+          imagePullPolicy: IfNotPresent
+          name: test-sha256-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: gp8-app
+  name: gp8-app-hpa-viwt
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 50
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gp8-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: gp8-app
+  name: gp8-app-service
+  namespace: default
+spec:
+  clusterIP: 10.119.254.88
+  externalTrafficPolicy: Cluster
+  ports:
+     - nodePort: 31770
+      port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: gp8-app
+  sessionAffinity: None
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  generateName: gp8-app-
+  labels:
+    app: gp8-app
+  name: gp8-app-service
+  namespace: default
+spec:
+  clusterIP: 10.119.240.1
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: gp8-app
+  sessionAffinity: None
+  type: ClusterIP
