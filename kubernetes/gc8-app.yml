@@ -55,33 +55,33 @@ metadata:
   name: gc8-app-service
   namespace: default
 spec:
-  clusterIP: 10.119.247.238
+  clusterIP: 34.68.42.120
   externalTrafficPolicy: Cluster
   ports:
-    - nodePort: 31695
+    # - nodePort: 31695
       port: 80
-      protocol: TCP
-      targetPort: 8080
-  selector:
-    app: gc8-app
-  sessionAffinity: None
-  type: LoadBalancer
----
-apiVersion: v1
-kind: Service
-metadata:
-  generateName: gc8-app-
-  labels:
-    app: gc8-app
-  name: gc8-app-service
-  namespace: default
-spec:
-  clusterIP: 10.119.240.1
-  ports:
-    - port: 80
       protocol: TCP
       targetPort: 5000
   selector:
     app: gc8-app
   sessionAffinity: None
-  type: ClusterIP
+  type: LoadBalancer
+---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   generateName: gc8-app-
+#   labels:
+#     app: gc8-app
+#   name: gc8-app-service
+#   namespace: default
+# spec:
+#   clusterIP: 10.119.240.1
+#   ports:
+#     - port: 80
+#       protocol: TCP
+#       targetPort: 5000
+#   selector:
+#     app: gc8-app
+#   sessionAffinity: None
+#   type: ClusterIP
