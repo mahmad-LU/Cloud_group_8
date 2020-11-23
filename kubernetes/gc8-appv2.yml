@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: gc8-app
-  name: gc8-app
+  name: hello-app
   namespace: default
 spec:
   replicas: 1
@@ -30,7 +30,7 @@ kind: HorizontalPodAutoscaler
 metadata:
   labels:
     app: gc8-app
-  name: gc8-app-hpa-viwt
+  name: hello-app-hpa-viwt
   namespace: default
 spec:
   maxReplicas: 5
@@ -43,7 +43,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: gc8-app
+    name: hello-app
 ---
 apiVersion: v1
 kind: Service
