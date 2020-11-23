@@ -73,7 +73,7 @@ metadata:
   generateName: gc8-app-
   labels:
     app: gc8-app
-  name: gc8-app-zqx5f
+  name: gc8-app-service
   namespace: default
 spec:
   clusterIP: 10.119.240.1
