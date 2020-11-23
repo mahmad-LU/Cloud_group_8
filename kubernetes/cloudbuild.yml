@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gc8-app
+  name: gc8-app
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gc8-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: gc8-app
+    spec:
+      containers:
+        - image: gcr.io/cloud-com-294113/github.com/mahmad-lu/cloud_group_8
+          imagePullPolicy: IfNotPresent
+          name: gc8-app
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: hello
+  name: gc8-app-hpa-viwt
+  namespace: default  
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 50
+      type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gc8-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: gc8-app
+  name: gc8-app-service
+  namespace: default
+spec:
+  clusterIP: 10.119.247.238
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 30359
+      port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: gc8-app
+  sessionAffinity: None
+  type: LoadBalancer
