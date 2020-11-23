@@ -55,7 +55,7 @@ metadata:
   name: gc8-app-service
   namespace: default
 spec:
-  clusterIP: 10.119.247.238
+  clusterIP: 10.119.248.215
   externalTrafficPolicy: Cluster
   ports:
     - nodePort: 30359
