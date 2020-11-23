@@ -30,7 +30,7 @@ kind: HorizontalPodAutoscaler
 metadata:
   labels:
     app: gp8-app
-  name: gp8-app-hpa-viwt
+  name: gp8-app-hpa
   namespace: default  
 spec:
   maxReplicas: 5
