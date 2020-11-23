@@ -58,7 +58,7 @@ spec:
   clusterIP: 10.119.248.215
   externalTrafficPolicy: Cluster
   ports:
-    # - nodePort: 31695
+     - nodePort: 30359
       port: 80
       protocol: TCP
       targetPort: 5000
