@@ -67,21 +67,21 @@ spec:
   sessionAffinity: None
   type: LoadBalancer
 ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   generateName: gc8-app-
-#   labels:
-#     app: gc8-app
-#   name: gc8-app-service
-#   namespace: default
-# spec:
-#   clusterIP: 10.119.240.1
-#   ports:
-#     - port: 80
-#       protocol: TCP
-#       targetPort: 5000
-#   selector:
-#     app: gc8-app
-#   sessionAffinity: None
-#   type: ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  generateName: gc8-app-
+  labels:
+    app: gc8-app
+  name: gc8-app-service
+  namespace: default
+spec:
+  clusterIP: 10.119.240.1
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: gc8-app
+  sessionAffinity: None
+  type: ClusterIP
