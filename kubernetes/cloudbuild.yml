@@ -55,7 +55,7 @@ metadata:
   name: gp8-app-service
   namespace: default
 spec:
-  clusterIP: 10.119.254.88
+  clusterIP: 10.4.0.0/20
   externalTrafficPolicy: Cluster
   ports:
     - nodePort: 31770
